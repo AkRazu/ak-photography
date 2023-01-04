@@ -1,18 +1,18 @@
 import React from "react";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import logo from '../../../images/logo4.png'
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import logo from "../../../images/logo4.png";
 const Navigation = () => {
   return (
     <Navbar sticky="top" bg="light" expand="lg">
       <Container>
         <Navbar.Brand href="#home">
-        <img className="w-42" src={logo} alt="" />
+          <img className="md:w-52 w-40" src={logo} alt="" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse className="justify-content-end"   id="basic-navbar-nav">
+        <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
           <Nav>
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#link">Link</Nav.Link>
