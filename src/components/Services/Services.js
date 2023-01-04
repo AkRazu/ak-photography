@@ -8,10 +8,10 @@ const Services = () => {
     return (
         <div className=" bg-[#F4F0ED]">
             <div className="container py-10">
-                <p style={{ letterSpacing: "3px" }} className='font-mono text-[#B5B5B5]'>WHAT I DO</p>
-                <p className='font-mono text-4xl text-[#4D504A]'>My Services</p>
+                <p style={{ letterSpacing: "3px" }} className='font-mono text-xl text-[#B5B5B5]'>WHAT I DO</p>
+                <p className='font-mono text-4xl mb-5 text-[#4D504A]'>My Services</p>
 
-                <div className="grid md:grid-cols-4 gap-4">
+                <div className="grid md:grid-cols-3 gap-4">
                     {
                       services.map(product=> <Service
                         key={product.id}

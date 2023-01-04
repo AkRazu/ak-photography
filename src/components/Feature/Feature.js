@@ -28,7 +28,7 @@ const Feature = () => {
           <div>
             <div className="mt-10 md:mt-0">
               <div>
-                <img className="w-8/12 rounded-sm" src={feature2} alt="" />
+                <img className="md:w-8/12 rounded-sm" src={feature2} alt="" />
               </div>
               <p style={{ letterSpacing: "10px" }} className="text-start text-[#4D504A] mt-10">
                 INTERIOR

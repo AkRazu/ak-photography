@@ -8,8 +8,8 @@ import Services from "../../Services/Services";
 
 const Hero = () => {
   return (
-    <div>
-       <Carousel>
+    <div >
+       <Carousel className="hidden md:block">
       <Carousel.Item interval={1000}>
         <img
           className="d-block w-100"
@@ -17,7 +17,7 @@ const Hero = () => {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3 className="uppercase text-5xl">Made with love</h3>
+          <p className="uppercase md:text-5xl">Made with love</p>
           <p>Best love with nature </p>
         </Carousel.Caption>
       </Carousel.Item>
@@ -28,7 +28,7 @@ const Hero = () => {
           alt="Second slide"
         />
         <Carousel.Caption>
-        <h3 className="uppercase text-5xl">Made for you</h3>
+        <p className="uppercase md:text-5xl">Made for you</p>
           <p>Make a love partner</p>
         </Carousel.Caption>
       </Carousel.Item>
@@ -39,7 +39,7 @@ const Hero = () => {
           alt="Third slide"
         />
         <Carousel.Caption>
-        <h3 className="uppercase text-5xl">Made to shine</h3>
+        <p className="uppercase md:text-5xl">Made to shine</p>
           <p>Shine for your partner</p>
         </Carousel.Caption>
       </Carousel.Item>
