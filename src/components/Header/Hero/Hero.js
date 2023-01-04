@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import slide1 from '../../../images/slide-1.jpg'
 import slide2 from '../../../images/slide-2.jpg'
 import slide3 from '../../../images/slide-3.jpg'
+import Feature from "../../Feature/Feature";
 
 const Hero = () => {
   return (
@@ -26,8 +27,8 @@ const Hero = () => {
           alt="Second slide"
         />
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h3 className="uppercase text-5xl">Made for you</h3>
+          <p>Make a love partner</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -37,13 +38,14 @@ const Hero = () => {
           alt="Third slide"
         />
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+        <h3 className="uppercase text-5xl">Made to shine</h3>
+          <p>Shine for your partner</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+    <div>
+      <Feature/>
+    </div>
     </div>
   );
 };
