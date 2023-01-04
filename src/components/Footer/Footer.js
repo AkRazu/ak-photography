@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../images/logo3.png";
 const Footer = () => {
   return (
-    <div className=" bg-[#FFF9F4]">
+    <div className=" bg-[#FFFFFF]">
       <div className="container">
         <div className="grid md:grid-cols-2">
           <div>
@@ -14,10 +14,10 @@ const Footer = () => {
             <div >
               <p style={{letterSpacing:"5px"}} className="text-center">Find Us on</p>
               <p>
-              <i class="mx-2 text-3xl fa-brands fa-facebook"></i>
-              <i class="mx-2 text-3xl fa-brands fa-square-twitter"></i>
-              <i class="mx-2 text-3xl fa-brands fa-instagram"></i>
-              <i class="mx-2 text-3xl fa-brands fa-linkedin"></i>
+              <i class="mx-2 text-[#69737F] text-3xl fa-brands fa-facebook"></i>
+              <i class="mx-2 text-[#69737F] text-3xl fa-brands fa-square-twitter"></i>
+              <i class="mx-2 text-[#69737F] text-3xl fa-brands fa-instagram"></i>
+              <i class="mx-2 text-[#69737F] text-3xl fa-brands fa-linkedin"></i>
               </p>
             </div>
           </div>
