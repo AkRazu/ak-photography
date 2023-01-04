@@ -17,6 +17,12 @@ import {
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import logo from "../../images/logo4.png";
+import auth from "../Auth/firebase_init";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const callsToAction = [
   { name: "Watch Demo", href: "#", icon: PlayIcon },
@@ -64,9 +70,22 @@ const recentPosts = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
+
 const Navbar = () => {
+    const navigate = useNavigate();
+    const [user] = useAuthState(auth);
+    const [signOut] = useSignOut(auth);
+    const handelSignout= async () => {
+            const success = await signOut();
+            if (success) {
+              toast.success('You are sign out');
+            }
+          }
+    
+    console.log(user);
   return (
     <div>
+        <ToastContainer />
       <Popover className="relative  bg-white">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
@@ -100,20 +119,32 @@ const Navbar = () => {
 
               
             </Popover.Group>
-            <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+            {
+                user? <div className="hidden items-center items-center justify-end md:flex md:flex-1 lg:w-0">
+                    <p className="m-0">{user.email}</p>
+                <a
+                  onClick={()=>handelSignout()}
+                  className="cursor-pointer ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                >
+                  Sign out
+                </a>
+                
+                </div>:<div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
               <a
-                href="#"
-                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              onClick={()=>navigate('/login')}
+                className="cursor-pointer whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
               >
-                Sign in
+                Login
               </a>
               <a
-                href="#"
-                className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                onClick={()=>navigate('/signup')}
+                className="cursor-pointer ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
               >
                 Sign up
               </a>
             </div>
+            }
+            
           </div>
         </div>
 
@@ -188,7 +219,7 @@ const Navbar = () => {
                       href="#"
                       className="text-indigo-600 hover:text-indigo-500"
                     >
-                      Sign in
+                      Login
                     </a>
                   </p>
                 </div>
