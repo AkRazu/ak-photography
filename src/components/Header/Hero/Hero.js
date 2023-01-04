@@ -4,6 +4,7 @@ import slide1 from '../../../images/slide-1.jpg'
 import slide2 from '../../../images/slide-2.jpg'
 import slide3 from '../../../images/slide-3.jpg'
 import Feature from "../../Feature/Feature";
+import Services from "../../Services/Services";
 
 const Hero = () => {
   return (
@@ -43,6 +44,9 @@ const Hero = () => {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+    <div>
+      <Services/>
+    </div>
     <div>
       <Feature/>
     </div>

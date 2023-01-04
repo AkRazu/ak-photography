@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Wedding Photography",
+    "price": 1100,
+    "img": "",
+    "description": "Per day Session, Photo Editing, 250 Digital Images, Online Gallery"
+  },
+  {
+    "id": 2,
+    "name": "Fashion Photography",
+    "price": 440,
+    "img": "",
+    "description": "per Session, Photo Editing, 100 Digital Images, Online Gallery"
+  },
+  {
+    "id": 3,
+    "name": "Portrait Photography",
+    "price": 550,
+    "img": "",
+    "description": "6 Hours Session, Photo Editing, 100 Digital Images, Online Gallery"
+  },
+  {
+    "id": 4,
+    "name": "Advertising Photography",
+    "price": 2100,
+    "img": "",
+    "description": "Per Campaign, Photo Editing, 100 Digital Images, Online Gallery"
+  },
+  {
+    "id": 5,
+    "name": "Real-estate Photography",
+    "price": 380,
+    "img": "",
+    "description": "Per Home, Photo Editing, 100 Digital Images, Online Gallery"
+  },
+  {
+    "id": 6,
+    "name": "Newborn Photography",
+    "price": 300,
+    "img": "",
+    "description": "3 Hours Session, Photo Editing, 50 Digital Images, Online Gallery"
+  }
+]

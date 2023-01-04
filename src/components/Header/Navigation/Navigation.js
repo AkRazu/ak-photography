@@ -6,10 +6,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from '../../../images/logo4.png'
 const Navigation = () => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar sticky="top" bg="light" expand="lg">
       <Container>
         <Navbar.Brand href="#home">
-        <img className="w-52" src={logo} alt="" />
+        <img className="w-42" src={logo} alt="" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end"   id="basic-navbar-nav">
