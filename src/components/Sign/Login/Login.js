@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useState } from "react";
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import { useNavigate } from "react-router-dom";
+import auth from "../../Auth/firebase_init";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+
 const Login = () => {
-    const navigate = useNavigate();
-    return (
-        <div className="h-full container">
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [signInWithEmailAndPassword] =
+    useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle] = useSignInWithGoogle(auth);
+
+  const navigate = useNavigate();
+
+  const handelEmail = (event) => {
+    setEmail(event.target.value);
+  };
+  const handelPassword = (event) => {
+    setPassword(event.target.value);
+  };
+console.log(email,password);
+  const handelSubmit = (event) => {
+    event.preventDefault();
+    signInWithEmailAndPassword(email, password);
+    navigate("/");
+  };
+  return (
+    <div className="h-full container">
       <div className="flex min-h-full items-center justify-center py-2 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
@@ -12,7 +35,12 @@ const Login = () => {
               Log in to your account
             </h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form
+            onSubmit={handelSubmit}
+            className="mt-8 space-y-6"
+            action="#"
+            method="POST"
+          >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -20,6 +48,7 @@ const Login = () => {
                   Email address
                 </label>
                 <input
+                  onBlur={handelEmail}
                   id="email-address"
                   name="email"
                   type="email"
@@ -34,6 +63,7 @@ const Login = () => {
                   Password
                 </label>
                 <input
+                  onBlur={handelPassword}
                   id="password"
                   name="password"
                   type="password"
@@ -63,7 +93,6 @@ const Login = () => {
 
               <div className="text-sm">
                 <a
-                  href="#"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot your password?
@@ -73,8 +102,9 @@ const Login = () => {
 
             <div>
               <button
+              
                 type="submit"
-                className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className=" group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                   <LockClosedIcon
@@ -89,7 +119,7 @@ const Login = () => {
           <p class="text-sm font-medium text-center text-gray-400">
             Don&#x27;t have an account yet?{" "}
             <a
-            onClick={()=>navigate('/signup')}
+              onClick={() => navigate("/signup")}
               class="text-indigo-600 focus:outline-none focus:underline focus:text-indigo-600 dark:focus:border-indigo-800 cursor-pointer"
             >
               Sign up
@@ -108,8 +138,8 @@ const Login = () => {
       </div>
       <div className="md:w-4/12 mx-auto">
         <a
-          href="#"
-          class="flex no-underline items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded"
+        onClick={()=>signInWithGoogle()}
+          class="cursor-pointer flex no-underline items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded"
         >
           <svg
             class="w-5 h-5"
@@ -142,7 +172,7 @@ const Login = () => {
         </a>
       </div>
     </div>
-    );
+  );
 };
 
 export default Login;

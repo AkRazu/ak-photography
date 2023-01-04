@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import { useNavigate } from "react-router-dom";
 import auth from "../../Auth/firebase_init";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const SignUp = () => {
@@ -10,6 +10,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState("");
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
 
   const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
@@ -38,6 +40,7 @@ const SignUp = () => {
   };
 
   console.log(email, password, confirmPassword);
+  console.error(error);
 
   return (
     <div>
@@ -143,8 +146,8 @@ const SignUp = () => {
         </div>
         <div className="md:w-4/12 mx-auto">
           <a
-            href="#"
-            class="flex no-underline items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded"
+            onClick={()=>signInWithGoogle()}
+            class="flex no-underline items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded cursor-pointer"
           >
             <svg
               class="w-5 h-5"

@@ -89,8 +89,8 @@ const Navbar = () => {
       <Popover className="relative  bg-white">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
-            <div className="flex justify-start lg:w-0 lg:flex-1">
-              <a href="#">
+            <div className="flex justify-start lg:w-0 lg:flex-1 cursor-pointer">
+              <a onClick={()=>navigate('/')}>
                 <span className="sr-only">Ak Photography</span>
                 <img className="h-8 w-auto sm:h-10" src={logo} alt="logoweb" />
               </a>
@@ -206,7 +206,40 @@ const Navbar = () => {
                     </a>
                   ))}
                 </div>
+                {
+                    user? <div>
+                    
+                   
+                    <p className="mt-6 text-center text-base font-medium text-gray-500">
+                      Existing customer?{" "}
+                      <a
+                        href="#"
+                        className="text-indigo-600 hover:text-indigo-500"
+                      >
+                        Sign out
+                      </a>
+                    </p>
+                  </div> :<div>
+                    
+                    <a
+                      href="#"
+                      className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                    >
+                      Sign up
+                    </a>
+                    <p className="mt-6 text-center text-base font-medium text-gray-500">
+                      Existing customer?{" "}
+                      <a
+                        href="#"
+                        className="text-indigo-600 hover:text-indigo-500"
+                      >
+                        Login
+                      </a>
+                    </p>
+                  </div>
+                }
                 <div>
+                    
                   <a
                     href="#"
                     className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
