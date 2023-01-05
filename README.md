@@ -4,9 +4,12 @@
 
 ## Project Details
 
-This is the basic website here i use
+### `This is the basic website here i give some feature` 
 
-### `npm start`
+### Home
+### Service
+### Blog
+### About
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
