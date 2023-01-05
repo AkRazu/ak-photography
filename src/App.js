@@ -9,12 +9,15 @@ import Navbar from './components/Navbar/Navbar';
 import Login from './components/Sign/Login/Login';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import NotFound from './components/NotFound/NotFound';
+import Services from './components/Services/Services';
+import Blog from './components/Blog/Blog';
 function App() {
   return (
     <div className="App">
       <Navbar/>
       <Routes>
         <Route path='/' element={<Hero/>}></Route>
+        <Route path='/service' element={<Services/>}></Route>
         <Route path='/signup' element={<SignUp/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/checkout' element={
@@ -22,6 +25,7 @@ function App() {
             <Checkout/>
           </RequireAuth>
         }></Route>
+        <Route path='/blog' element={<Blog/>}></Route>
         <Route path='*' element={<NotFound/>}></Route>
       </Routes>
       <Footer/>
