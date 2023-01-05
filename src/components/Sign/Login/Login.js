@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [signInWithEmailAndPassword] =
     useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle] = useSignInWithGoogle(auth);
+    const [signInWithGoogle,user] = useSignInWithGoogle(auth);
 
   const navigate = useNavigate();
 
@@ -26,6 +26,9 @@ console.log(email,password);
     signInWithEmailAndPassword(email, password);
     navigate("/");
   };
+  if(user){
+    navigate("/");
+  }
   return (
     <div className="h-full container">
       <div className="flex min-h-full items-center justify-center py-2 px-4 sm:px-6 lg:px-8">
