@@ -10,13 +10,11 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState("");
+
   const [signInWithGoogle, user, error] = useSignInWithGoogle(auth);
-  const [sendEmailVerification, sending] = useSendEmailVerification(
-    auth
-  );
 
   const [createUserWithEmailAndPassword] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, {sendEmailVerification:true});
 
   const navigate = useNavigate();
 

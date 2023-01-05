@@ -2,18 +2,27 @@ import React, { useState } from "react";
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../Auth/firebase_init";
-import { useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const [user]=useAuthState(auth);
+  const [user] = useAuthState(auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [signInWithEmailAndPassword] =
+  const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
+
+  const [sendPasswordResetEmail, sending] =
+    useSendPasswordResetEmail(auth);
 
   const navigate = useNavigate();
-
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
@@ -23,17 +32,34 @@ const Login = () => {
   const handelPassword = (event) => {
     setPassword(event.target.value);
   };
-console.log(email,password);
-  const handelSubmit = (event) => {
+
+  const handelSubmit = async(event) => {
     event.preventDefault();
-    signInWithEmailAndPassword(email, password);
-    navigate("/");
+    const check = event.target.checkbox.checked;
+
+    if (check) {
+      signInWithEmailAndPassword(email, password);
+    } else {
+      toast.error("Check the remember me");
+    }
+    if (user) {
+      navigate("/");
+    }
   };
-  if(user){
+  if (user) {
     navigate(from, { replace: true });
+  }
+  const handelReset = async () => {
+    const success = await sendPasswordResetEmail(
+      email
+    );
+    if (success) {
+      toast.success('Sent email');
+    }
   }
   return (
     <div className="h-full container">
+      <ToastContainer />
       <div className="flex min-h-full items-center justify-center py-2 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
@@ -85,7 +111,7 @@ console.log(email,password);
               <div className="flex items-center">
                 <input
                   id="remember-me"
-                  name="remember-me"
+                  name="checkbox"
                   type="checkbox"
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                 />
@@ -99,16 +125,13 @@ console.log(email,password);
 
               <div className="text-sm">
                 <a
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
+                onClick={()=>handelReset()} className="cursor-pointer font-medium text-indigo-600 hover:text-indigo-500">
                   Forgot your password?
                 </a>
               </div>
             </div>
-
             <div>
               <button
-              
                 type="submit"
                 className=" group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
@@ -144,7 +167,7 @@ console.log(email,password);
       </div>
       <div className="md:w-4/12 mx-auto">
         <a
-        onClick={()=>signInWithGoogle()}
+          onClick={() => signInWithGoogle()}
           class="cursor-pointer flex no-underline items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded"
         >
           <svg

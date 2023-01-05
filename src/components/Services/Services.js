@@ -1,9 +1,9 @@
 import React from 'react';
-import useProducts from '../../useProducts/useProducts';
+import useFetch from '../../hooks/useFetch';
 import Service from '../Service/Service';
 
 const Services = () => {
-    const [services,setServices]=useProducts([]);
+    const [services,setServices]=useFetch([]);
     console.log(services);
     return (
         <div className=" bg-[#F4F0ED]">
