@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import { useNavigate } from "react-router-dom";
 import auth from "../../Auth/firebase_init";
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const SignUp = () => {
@@ -11,7 +11,9 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState("");
   const [signInWithGoogle, user, error] = useSignInWithGoogle(auth);
-
+  const [sendEmailVerification, sending] = useSendEmailVerification(
+    auth
+  );
 
   const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);

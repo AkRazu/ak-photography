@@ -16,31 +16,30 @@ const About = () => {
             <p className="text-gray-500 font-medium">
               I am a programmer. My goal is to make a better technology that
               will be helpful to every person. The bigger goal is research for
-              Space . However web development is a one kind of passion here i learn tons of programming fundamental.If you are interested to knock about me DM me.
+              Space. However, web development is one kind of passion here I
+              learned tons of programming fundamentals. If you are interested to
+              know about me DM me.
             </p>
           </div>
-          <div >
+          <div>
             <div className="flex justify-center items-center">
-            <img className="rounded-full w-2/5" src="https://img.freepik.com/premium-psd/character-avatar-3d-illustration_460336-706.jpg?w=740" alt="profile" />
+              <img
+                className="rounded-full w-2/5"
+                src="https://img.freepik.com/premium-psd/character-avatar-3d-illustration_460336-706.jpg?w=740"
+                alt="profile"
+              />
             </div>
           </div>
           <div className="text-start">
-          <p className="text-3xl font-medium">Details</p>
-            <p className="font-medium">
-             Name:
-            </p>
+            <p className="text-3xl font-medium">Details</p>
+            <p className="font-medium">Name:</p>
             <p>Code Bear</p>
-            <p className="font-medium">
-             Age:
-            </p>
+            <p className="font-medium">Age:</p>
             <p className="text-gray-400">Loading...</p>
-            <p className="font-medium">
-             Location:
-            </p>
+            <p className="font-medium">Location:</p>
             <p>Bangladesh 🇧🇩</p>
           </div>
         </div>
-        
       </div>
     </div>
   );
