@@ -15,8 +15,8 @@
 
 #### `React, JSX , Bootstrap, Tailwind`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+Open [https://ak-photography-95ff7.web.app/](https://ak-photography-95ff7.web.app/) to view it in your browser.
 
 
 # ak-photography
