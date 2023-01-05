@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { LockClosedIcon } from "@heroicons/react/20/solid";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../Auth/firebase_init";
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 
 const Login = () => {
-
+  const [user]=useAuthState(auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signInWithEmailAndPassword] =
     useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle,user] = useSignInWithGoogle(auth);
+    const [signInWithGoogle] = useSignInWithGoogle(auth);
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const handelEmail = (event) => {
     setEmail(event.target.value);
@@ -27,7 +30,7 @@ console.log(email,password);
     navigate("/");
   };
   if(user){
-    navigate("/");
+    navigate(from, { replace: true });
   }
   return (
     <div className="h-full container">
