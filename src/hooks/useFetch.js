@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const useFetch = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("https://api.npoint.io/f1ee1e9ef3ff9c290b21")
+    fetch("https://api.npoint.io/7f4613af08bd5240073a")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);

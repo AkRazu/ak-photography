@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import Cardcheckout from "../Cardcheckout/Cardcheckout";
 
 const Checkout = () => {
   const {keys} = useParams();
@@ -8,7 +9,7 @@ const Checkout = () => {
   const detailsService = services.filter((find) => find.id + "" === keys);
   console.log(detailsService[0], keys);
   return (
-    <div className="container h-screen">
+    <div className="container md:h-screen">
       <div className="md:grid gap-3 grid-cols-2">
         <div className="mt-20">
           <div>
@@ -27,12 +28,7 @@ const Checkout = () => {
                 placeholder="Last Name"
               />
             </div>
-            <br />
-            <input
-              className="form-input w-full"
-              type="text"
-              placeholder="Address"
-            />
+            
             <div className="md:flex my-4">
               <input
                 className="form-input w-full mx-1"
@@ -44,25 +40,36 @@ const Checkout = () => {
                 type="text"
                 placeholder="Zip Code"
               />
+              <input
+              className="form-input w-full mx-1"
+              type="text"
+              placeholder="Address"
+            />
             </div>
+            <div className="md:flex my-4">
             <input
-              className="form-input w-full"
+                className="form-input w-full mx-1"
+                type="email"
+                placeholder="Email"
+              />
+            
+            <input
+              className="form-input w-full mx-1"
               type="text"
               placeholder="Phone"
             />
+            </div>
+
+            
           </div>
         </div>
         <div className="container">
-          <p>Order summary -</p>
-          <hr />
-          <img src="" alt="" />
-          <hr />
-          <h4>Subtotal </h4>
-
-          <div className="flex justify-between">
-            <h3>Order Total</h3>
-            <h3>$32.00</h3>
-          </div>
+          {
+            detailsService.map(svc=><Cardcheckout
+                key={svc.id}
+                svc={svc}
+            ></Cardcheckout>)
+          }
         </div>
       </div>
     </div>

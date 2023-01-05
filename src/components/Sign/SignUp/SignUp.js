@@ -5,6 +5,7 @@ import auth from "../../Auth/firebase_init";
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
