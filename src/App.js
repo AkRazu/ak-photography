@@ -11,6 +11,7 @@ import RequireAuth from './components/RequireAuth/RequireAuth';
 import NotFound from './components/NotFound/NotFound';
 import Services from './components/Services/Services';
 import Blog from './components/Blog/Blog';
+import About from './components/About/About';
 function App() {
   return (
     <div className="App">
@@ -26,6 +27,7 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path='/blog' element={<Blog/>}></Route>
+        <Route path='/about' element={<About/>}></Route>
         <Route path='*' element={<NotFound/>}></Route>
       </Routes>
       <Footer/>
